@@ -103,12 +103,12 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <!-- judul grafik -->
-                        <h6 class="m-0 font-weight-bold">Jumlah Transaksi Barang masuk</h6>
+                        <h6 class="m-0 font-weight-bold">Jumlah Transaksi Per Barang masuk dan keluar</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">
                             <!-- menampilkan grafik -->
-                            <canvas id="grafikBarangMasuk"></canvas>
+                            <canvas id="grafikBarangMasukKeluar"></canvas>
                         </div>
                     </div>
                 </div>
@@ -119,12 +119,12 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <!-- judul grafik -->
-                        <h6 class="m-0 font-weight-bold">Jumlah Transaksi Barang Keluar</h6>
+                        <h6 class="m-0 font-weight-bold">Jumlah Stok Barang Keluar dan keluar</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-bar">
                             <!-- menampilkan grafik -->
-                            <canvas id="grafikBarangKeluar"></canvas>
+                            <canvas id="grafikBarangMasukKeluarPie"></canvas>
                         </div>
                     </div>
                 </div>
@@ -134,23 +134,23 @@
 
     <script src="<?= url('https://cdn.jsdelivr.net/npm/chart.js') ?>"></script>
     <script>
-        var namaBarang = @json($namaBarang);
+        var totalBarangMasukQty = @json($totalBarangMasukQty);
+        var totalBarangKeluarQty = @json($totalBarangKeluarQty);
         var jumlahBarangMasuk = @json($jumlahBarangMasuk);
         var jumlahBarangKeluar = @json($jumlahBarangKeluar);
 
-
-        // Grafik total pendapatan per layanan (Bar Chart)
-        var ctx = document.getElementById("grafikBarangMasuk");
-        var grafikPendapatan = new Chart(ctx, {
+        // Grafik Barang Masuk dan Barang Keluar (Bar Chart)
+        var ctx = document.getElementById("grafikBarangMasukKeluar");
+        var grafikBarangMasukKeluar = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: namaBarang,
+                labels: ['Barang Masuk', 'Barang Keluar'],
                 datasets: [{
-                    label: "Barang Masuk",
-                    backgroundColor: ['#36b9cc', '#1cc88a', '#4e73df', '#f6c23e', '#e74a3b'],
-                    hoverBackgroundColor: ['#2c9faf', '#17a673', '#2e59d9', '#f4b619', '#e02d1b'],
+                    label: "Total Qty",
+                    backgroundColor: ['#36b9cc', '#e74a3b'],
+                    hoverBackgroundColor: ['#2c9faf', '#e02d1b'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
-                    data: jumlahBarangMasuk,
+                    data: [totalBarangMasukQty, totalBarangKeluarQty],
                 }],
             },
             options: {
@@ -204,24 +204,23 @@
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ' : Rp. ' + tooltipItem.yLabel;
+                            return datasetLabel + ' : ' + tooltipItem.yLabel + ' Qty';
                         }
                     }
                 },
             }
         });
 
-
-        // Grafik jumlah transaksi per layanan (Pie Chart)
-        var ctx2 = document.getElementById("grafikBarangKeluar");
-        var grafikTransaksi = new Chart(ctx2, {
-            type: 'doughnut',
+        // Grafik Barang Masuk dan Barang Keluar (Pie Chart)
+        var ctxPie = document.getElementById("grafikBarangMasukKeluarPie");
+        var grafikBarangMasukKeluarPie = new Chart(ctxPie, {
+            type: 'pie',
             data: {
-                labels: namaBarang,
+                labels: ['Barang Masuk', 'Barang Keluar'],
                 datasets: [{
-                    data: jumlahBarangKeluar,
-                    backgroundColor: ['#36b9cc', '#1cc88a', '#4e73df', '#f6c23e', '#e74a3b'],
-                    hoverBackgroundColor: ['#2c9faf', '#17a673', '#2e59d9', '#f4b619', '#e02d1b'],
+                    data: [totalBarangMasukQty, totalBarangKeluarQty],
+                    backgroundColor: ['#36b9cc', '#e74a3b'],
+                    hoverBackgroundColor: ['#2c9faf', '#e02d1b'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
                 }],
             },
@@ -238,10 +237,10 @@
                     caretPadding: 10,
                 },
                 legend: {
-                    display: false
+                    position: 'top',
+                    display: true,
                 },
-                cutoutPercentage: 80,
-            },
+            }
         });
     </script>
 @endsection

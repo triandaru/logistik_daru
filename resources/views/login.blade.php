@@ -8,7 +8,7 @@
     <meta name="description" content="Aplikasi Jasa Cuci Mobil dan Motor">
 
     <!-- Title -->
-    <title>Aplikasi Jasa Cuci Mobil dan Motor</title>
+    <title>Aplikasi Logistik Makanan Ringan</title>
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="assets/img/makanan.png" type="image/x-icon">
@@ -78,7 +78,45 @@
                                             <input type="submit" name="login" value="LOGIN"
                                                 class="btn btn-warning btn-user btn-block">
                                         </div>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-link" data-toggle="modal"
+                                                data-target="#loginModal">
+                                                Akses Login
+                                            </button>
+                                        </div>
                                     </form>
+
+                                    <!-- Modal untuk menampilkan email dan password -->
+                                    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="loginModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="loginModalLabel">Informasi Login</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <strong>Email: admin@example.com</strong> <span
+                                                        id="modalEmail"></span><br>
+                                                    <strong>Password: password</strong> <span id="modalPassword"></span>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <strong>Email: user@example.com</strong> <span
+                                                        id="modalEmail"></span><br>
+                                                    <strong>Password: password</strong> <span id="modalPassword"></span>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Tutup</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <!-- footer -->
                                     <div class="text-center mt-5">
