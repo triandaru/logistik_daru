@@ -73,13 +73,19 @@ Ikuti langkah-langkah di bawah ini untuk menginstal aplikasi ini:
     php artisan key:generate
     ```
 
-6. Jalankan migrasi database:
+6. Jalankan migrasi database atau upload db di phpmyadmin:
 
     ```bash
     php artisan migrate
     ```
 
-7. Jalankan server:
+7. atau upload db di phpmyadmin:
+   - hidupkan xampp atau laragon
+   - buka halaman phpmyadmin
+   - buat database baru dengan nama db_logistik_daru
+   - setelah dibuat import db yang sudah ada di repositori
+     
+9. Jalankan srrver:
     ```bash
     php artisan serve
     ```
