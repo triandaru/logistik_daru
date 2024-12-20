@@ -2,14 +2,14 @@
 
 Selamat datang di aplikasi web Logistik! Aplikasi ini dirancang menggunakan laravel 10 dan php 8 dengan dua peran utama: Admin dan User.
 
-- Admin (username: admin@example.com, password: password) 
-- User (username: user@example.com, password: password)
+- Admin (email: admin@example.com, password: password) 
+- User (email: user@example.com, password: password)
 
 
 
 ## Fitur Utama
 
-### Role Owner
+### Role Admin
 
 -   **Dashboard**: Akses statistik lengkap seperti jumlah pengguna, jumlah data barang, , barang masuk, barang keluar, dan grafik.
 -   **Manajemen Barang**: Tambah, lihat, edit, dan hapus data barang.
@@ -17,7 +17,7 @@ Selamat datang di aplikasi web Logistik! Aplikasi ini dirancang menggunakan lara
 -   **Manajemen Barang Keluar**: Tambah, edit, dan hapus data Barang keluar.
 -   **Manajemen Pengguna**: Tambah, edit, dan hapus data pengguna.
 
-### Role Kasir
+### Role User
 
 -   **Dashboard**: Akses statistik lengkap seperti jumlah pengguna, jumlah data barang, , barang masuk, barang keluar, dan grafik.
 -   **Manajemen Barang**: Tambah, lihat, edit, dan hapus data barang.
